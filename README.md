@@ -6,18 +6,18 @@ High Level Design An Amazon API Gateway is a collection of resources and methods
 
 The POST method on the DynamoDBManager resource supports the following DynamoDB operations:
 
-->Create, update, and delete an item.
+- Create, update, and delete an item.
 
-->Read an item.
+- Read an item.
 
-->Scan an item.
+- Scan an item.
 
-->Other operations (echo, ping), not related to DynamoDB, that you can use for testing.
+- Other operations (echo, ping), not related to DynamoDB, that you can use for testing.
 
 The request payload you send in the POST request identifies the DynamoDB operation and provides necessary data. For example:
 
 The following is a sample request payload for a DynamoDB create item operation:
-
+```JSON
 {
     "operation": "create",
     "tableName": "lambda-apigateway",
@@ -28,8 +28,9 @@ The following is a sample request payload for a DynamoDB create item operation:
         }
     }
 }
+```
 The following is a sample request payload for a DynamoDB read item operation:
-
+```JSON
 {
     "operation": "read",
     "tableName": "lambda-apigateway",
@@ -39,4 +40,5 @@ The following is a sample request payload for a DynamoDB read item operation:
         }
     }
 }
+'''
 Setup
