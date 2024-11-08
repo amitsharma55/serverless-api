@@ -187,15 +187,11 @@ Let's create a DynamoDB table for lambda function to use.
 - Click on 'Create API'
 - Select REST API and click Build
 ![High Level Design](./images/RESTAPI.jpg)
-
 - Provide API Name as 'DynamoDBOperations' and click 'Create API'
 ![High Level Design](./images/RESTAPI2.jpg)
-
 - Each API is collection of resources and methods that are integrated with backend HTTP endpoints, Lambda functions, or other AWS services. Typically, API resources are organized in a resource tree according to the application logic. At this time you only have the root resource, but let's add a resource next
-
 - Click 'Create Resource' and provide name as 'DynamoDBManager' and Create resource
 ![High Level Design](./images/APIResource.jpg)
-
 - Now Select created resource i.e. '/DynamoDBManager' and click 'Create method' in left
 ![High Level Design](./images/APIMethod.jpg)
 - API-Lambda integration is done
@@ -203,9 +199,7 @@ Let's create a DynamoDB table for lambda function to use.
 
 ### Deploy the API
 Deploy the API by clicking on 'Deploy API' button on left side. You need to create a new stage for deploy, let's say 'prod' and click 'Deploy'
-
 ![High Level Design](./images/APIDeploy.jpg)
-
 Now We're all set to run our solution! To invoke our API endpoint, we need the endpoint url. In the "Stages" screen, expand the stage "Prod", select "POST" method, and copy the "Invoke URL" from screen.
 ![High Level Design](./images/APIInvoke.jpg)
 
@@ -227,16 +221,12 @@ Let's test our solution!!
 - To execute our API from local machine, we are going to use Postman and Curl command. You can choose either method based on your convenience and familiarity.
     - To run this from Postman, select "POST" , paste the API invoke url. Then under "Body" select "raw" and paste the above JSON. Click "Send". API should execute and return "HTTPStatusCode" 200.
 ![High Level Design](./images/postman-post.jpg)
-
     - To run this from terminal using Curl, run the below
     ```BASH
     $ curl -X POST -d "{\"operation\":\"create\",\"tableName\":\"lambda-apigateway\",\"payload\":{\"Item\":{\"id\":\"1\",\"name\":\"Bob\"}}}" https://$API.execute-api.$REGION.amazonaws.com/prod/DynamoDBManager
     ```
-
 - To validate that the item is indeed inserted into DynamoDB table, go to Dynamo console, select "lambda-apigateway" table, click on "Explore table items" tab, and the newly inserted items should be displayed.
 ![High Level Design](./images/Dynamodbitems.jpg)
-
-
 - To get all the inserted items from the table, we can use the "list" operation of Lambda using the same API. Pass the following JSON to the API, and it will return all the items from the Dynamo table
 ```JSON
 {
